@@ -81,16 +81,15 @@ class CarritoController {
         })
      }
 
-    public async updateMesa (req: Request, res: Response){
+     public async updateMesa (req: Request, res: Response){
         const token:any = req.headers['authorization'];
         const tokenWithoutBearer = token.replace('Bearer ', '');
         const decodedToken:any = jwt.verify(tokenWithoutBearer, 'secreto-seguro');
-        const userId = decodedToken.id
-        const productId =  req.params.id;
+        const userId = decodedToken.id;
         const adminId = decodedToken.adminId
         const mesa = req.body.mesa
-        const query = 'UPDATE carrito_caja SET mesa = ? WHERE id = ? AND userId = ? AND adminId = ?';
-        const bebidas: any = await pool.promise().query(query, [mesa, productId, userId, adminId])
+        const query = 'UPDATE carrito_caja SET mesa = ? WHERE userId = ? AND adminId = ?';
+        const bebidas: any = await pool.promise().query(query, [mesa, userId, adminId])
         .then(() => {
             res.json({text: 'Mesa actualizada'})
         })
