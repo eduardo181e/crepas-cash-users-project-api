@@ -112,7 +112,8 @@ class CarritoController {
             nombre: req.body.nombre,
             precio: req.body.precio,
             cantidad: req.body.cantidad,
-            total: req.body.total
+            total: req.body.total,
+            mesa: req.body.mesa
         }
 
           await pool.promise().query('UPDATE carrito_caja SET ? WHERE id = ? AND userId = ? AND adminId = ?', [Orden, ordenId, userId, adminId])
