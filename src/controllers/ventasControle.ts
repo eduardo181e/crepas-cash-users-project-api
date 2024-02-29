@@ -30,6 +30,7 @@ class VentasController {
     } 
      sales = (req: Request, res: Response) => {
       const now = req.params.now;
+    const mesa = req.params.mesa;
       const token:any = req.headers['authorization'];
             const tokenWithoutBearer = token.replace('Bearer ', '');
       const decodedToken:any = jwt.verify(tokenWithoutBearer, 'secreto-seguro'); // Decodificar el token
@@ -1415,7 +1416,8 @@ class VentasController {
               orden: JSON.stringify(ordenes),
               numero_productos: cantidadProductos,
               total: totalProductos,
-              adminId: adminId
+              adminId: adminId,
+              mesa: mesa
             }
             const query = 'INSERT INTO factura_caja SET ?';
             const factura1:any = await pool1.promise().query(query, [factura])
