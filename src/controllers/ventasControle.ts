@@ -30,7 +30,11 @@ class VentasController {
     } 
      sales = (req: Request, res: Response) => {
       const now = req.params.now;
+<<<<<<< HEAD
       const mesa = req.params.mesa;
+=======
+    const mesa = req.params.mesa;
+>>>>>>> cc68ff80634b1ae767ba183d2e7f5ecde1bf88ca
       const token:any = req.headers['authorization'];
             const tokenWithoutBearer = token.replace('Bearer ', '');
       const decodedToken:any = jwt.verify(tokenWithoutBearer, 'secreto-seguro'); // Decodificar el token
