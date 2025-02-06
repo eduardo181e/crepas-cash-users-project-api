@@ -34,7 +34,10 @@ class Server {
     config() {
         this.app.set('port', 3001);
         this.app.use((0, morgan_1.default)('dev'));
-        this.app.use((0, cors_1.default)());
+        this.app.use((0, cors_1.default)({
+            origin: 'http://192.168.0.11:8080',
+            credentials: true
+        }));
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
         this.app.use((0, express_session_1.default)({

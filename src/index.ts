@@ -43,7 +43,7 @@ class Server {
         this.app.set('port', 3001);
         this.app.use(morgan('dev'));
         this.app.use(cors({
-        origin: 'https://alien-walker-409421.web.app',
+        origin: 'http://192.168.0.11:8080',
           credentials: true
         }
         ));
